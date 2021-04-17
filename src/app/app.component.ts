@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(
     private readonly dataService: DataService,
-    private readonly loadingService: LoadingService,
+    private readonly loadingService: LoadingService, //TODO refactor into store selector
   ) {
     this.vm.loadingService = loadingService;
   }

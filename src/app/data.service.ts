@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { interval, of } from 'rxjs';
-import { LoadingService } from './loading.service';
-import { delay, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private readonly loadingService: LoadingService) {}
+  constructor(private readonly httpService: HttpClient) {}
 
   get(loaderName: string) {
-    this.loadingService.startLoading(loaderName);
-    return of('this is the data!').pipe(
-      delay(2000),
-      tap(() => this.loadingService.endLoading(loaderName)),
-    );
+    return this.httpService.get('assets/data.json', {
+      headers: { 'loader-id': loaderName }, //TODO refactor loader-id header towards neato solution
+    });
   }
 }
