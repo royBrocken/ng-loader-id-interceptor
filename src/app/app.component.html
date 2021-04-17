@@ -1,0 +1,9 @@
+<button (click)="getData('1')">Start loading 1</button>
+<!-- <button (click)="endLoading('1')">End loading 1</button> -->
+<h3 *ngIf="vm.loadingService.loading['1'] === true">Loading 1...</h3>
+
+<hr>
+
+<button (click)="getData('2')">Start loading 2</button>
+<!-- <button (click)="endLoading('1')">End loading 1</button> -->
+<h3 *ngIf="vm.loadingService.loading['2'] === true">Loading 2...</h3>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService } from './data.service'
+import { LoadingService } from './loading.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-loading';
+  vm: any = {};
+
+  constructor(
+    private readonly dataService: DataService,
+    private readonly loadingService: LoadingService,
+  ) {
+    this.vm.loadingService = loadingService;
+  }
+
+  getData(loaderName: string) {
+    this.dataService.get(loaderName).subscribe()
+  }
+
 }
