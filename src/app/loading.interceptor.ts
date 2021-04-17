@@ -24,6 +24,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     if (!request.headers.has('loader-id')) return next.handle(request); //= skip if no loader-id present =>
 
+    //= store loaderId value and remove header entry for actual request
     const loaderId = request.headers.get('loader-id');
     const clone = request.clone({
       headers: request.headers.delete('loader-id'),
