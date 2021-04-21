@@ -34,7 +34,7 @@ export class LoadingInterceptor implements HttpInterceptor {
 
     return next.handle(clone).pipe(
       delayWhen(() => //= Prevent flicker if requests hover around 0 to 1
-        interval(this.loadingService.loading[loaderId] === 1 ? 8000 : 1000) //TODO remove 1000 for real xhr requests/adjust 8000
+        interval(this.loadingService.loading[loaderId] === 1 ? 2000 : 0) //TODO remove 1000 for real xhr requests/adjust 8000
       ),
       finalize(() => {
         this.loadingService.stopLoading(loaderId);

@@ -1,15 +1,24 @@
-<button (click)="getData('overlay-id')">Start loading with overlay</button>
-<h3 *ngIf="vm.loadingService.loading['overlay-id']">
-  I'm an overlay! - {{ vm.loadingService.loading['overlay-id'] }} requests pending</h3>
+<app-logo-overlay></app-logo-overlay>
+<app-screen-overlay></app-screen-overlay>
 
+<a href="/b">Go to path resolver with logo overlay</a>
+<br>
+<a href="/a">Go to path resolver with spinner overlay</a>
 <hr>
 
-<button (click)="getData('content-spinner')">Start loading with spinner</button>
-<h3 *ngIf="vm.loadingService.loading['content-spinner']">
-  I'm a spinner! - {{ vm.loadingService.loading['content-spinner'] }} requests pending</h3>
-
+<button (click)="getData('logo-overlay')">Start loading with logo</button>
 <hr>
 
-<button (click)="getData('content-button')">Start loading with button</button>
-<h3 *ngIf="vm.loadingService.loading['content-button']">
-  I'm a button! - {{ vm.loadingService.loading['content-button'] }} requests pending</h3>
+<button (click)="getData('screen-overlay')">Start loading with overlay</button>
+<hr>
+
+<button (click)="getData('content-button')">
+  <i class="fa fa-spinner fa-spin" 
+    *ngIf="loadingService.show('content-button')"></i> Start loading with button
+</button>
+
+<hr>
+<pre>
+  <h4>LoadingService.loading [TODO: replace with store]</h4>
+  {{ loadingService | json }}
+</pre>

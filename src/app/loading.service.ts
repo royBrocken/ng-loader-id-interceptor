@@ -23,4 +23,8 @@ export class LoadingService {
   stopLoading(loaderId: string) {
     this.loading = { ...this.loading, [loaderId]: this.dec(loaderId) };
   }
+  show(loaderId: string) {
+    return this.loading[loaderId] &&
+    this.loading[loaderId] > 0;
+  }
 }
